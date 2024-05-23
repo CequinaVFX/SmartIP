@@ -1,0 +1,2246 @@
+set cut_paste_input [stack 0]
+version 12.2 v6
+push $cut_paste_input
+Group {
+ name SmartIP
+ tile_color 0x185da5ff
+ gl_color 0x185da5ff
+ note_font "DejaVu Sans Bold Italic"
+ note_font_size 15
+ note_font_color 0xfcffffff
+ selected true
+ xpos 904
+ ypos 3888
+ hide_input true
+ disable {{curve}}
+ addUserKnob {20 User l smartIP}
+ addUserKnob {26 text l "" +STARTLINE T " "}
+ addUserKnob {22 setIP l "set IP name" -STARTLINE T "thisNode = nuke.thisNode()\n\nnuke.toNode(thisNode.knob('name').value()).begin()\n\nthisNode.end()\n\nnode = nuke.allNodes('Viewer')\n\nfor n in node:\n    n\['input_process_node'].setValue(thisNode.name())"}
+ addUserKnob {22 on_off l "IP on/off" -STARTLINE T "thisNode = nuke.thisNode()\n\nnuke.toNode(thisNode.knob('name').value()).begin()\n\nthisNode.end()\n\nnode = nuke.allNodes('Viewer')\n\nfor n in node:\n    if n\['input_process'].value() == True:\n        n\['input_process'].setValue(False)\n    else:\n        n\['input_process'].setValue(True)\n\n"}
+ addUserKnob {26 ""}
+ addUserKnob {20 compCheck l "color check" n 1}
+ compCheck 0
+ addUserKnob {6 client_LUT l "client LUT" +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {6 check_LOG l log +STARTLINE}
+ addUserKnob {6 check_colorspace l colorspace +STARTLINE}
+ addUserKnob {41 in_colorspace l "" -STARTLINE T OCIOColorSpace1.in_colorspace}
+ addUserKnob {26 ""}
+ addUserKnob {6 enable_gain l gain +STARTLINE}
+ enable_gain true
+ addUserKnob {6 enable_gamma l gamma -STARTLINE}
+ enable_gamma true
+ addUserKnob {6 enable_saturation l saturation -STARTLINE}
+ enable_saturation true
+ addUserKnob {7 gaindown l gain R 0 4}
+ gaindown 1
+ addUserKnob {22 setgain l reset -STARTLINE T "v = nuke.thisNode()\nv\['gaindown'].setValue(1)"}
+ addUserKnob {7 gammaslider l gamma R 0 4}
+ gammaslider 1
+ addUserKnob {22 setgamma l reset -STARTLINE T "v = nuke.thisNode()\nv\['gammaslider'].setValue(1)"}
+ addUserKnob {7 saturation R 0 2}
+ saturation 1
+ addUserKnob {22 res_sat l reset -STARTLINE T "v = nuke.thisNode()\nv\['saturation'].setValue(1)"}
+ addUserKnob {20 endGroup_3 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 gr_balance l "black and white balance" n 1}
+ gr_balance 0
+ addUserKnob {6 enable_black l black +STARTLINE}
+ addUserKnob {18 blackBal l "" -STARTLINE}
+ addUserKnob {6 blackBal_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {22 reset_black l reset -STARTLINE T "node = nuke.thisNode()\nnode\['blackBal'].setValue(0)"}
+ addUserKnob {6 blackBal_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 blackBal_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 blackBal_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 blackBal_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 blackBal_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 blackBal_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 blackBal_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 blackBal_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 blackBal_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 enable_white l white +STARTLINE}
+ addUserKnob {18 whiteBal l "" -STARTLINE}
+ whiteBal 1
+ addUserKnob {6 whiteBal_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {22 reset_white l reset -STARTLINE T "node = nuke.thisNode()\nnode\['whiteBal'].setValue(1)"}
+ addUserKnob {6 whiteBal_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 whiteBal_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 whiteBal_panelDropped_1_1_1 l "panel dropped state" +HIDDEN +STARTLINE}
+ addUserKnob {6 whiteBal_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 whiteBal_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 whiteBal_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 whiteBal_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 whiteBal_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 whiteBal_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {18 gain_compensation l "gain compensation" R 0 4}
+ gain_compensation 1
+ addUserKnob {6 gain_compensation_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {22 reset_gainCompensation l reset -STARTLINE T "node = nuke.thisNode()\nnode\['gain_compensation'].setValue(1)"}
+ addUserKnob {6 gainComp_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 gainComp_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 gainComp_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 gainComp_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 gainComp_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 gainComp_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 gainComp_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 gainComp_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 gainComp_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 gainComp_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 techCheck l "technical check" n 1}
+ techCheck 0
+ addUserKnob {20 grain_group l "grain check" n 1}
+ grain_group 0
+ addUserKnob {4 grainMethod l method M {"Laplacian (Grain)" HighPass "Sobel (Edge)" "Prewitt (Edge)" ""}}
+ addUserKnob {7 grainMultiply l gain R 0 10}
+ grainMultiply 10
+ addUserKnob {20 endGroup_7 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 HSL_group l "HSL check" n 1}
+ HSL_group 0
+ addUserKnob {83 hsl l check M {hue saturation luminance}}
+ addUserKnob {20 endGroup_8 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 crazyPixel_group l "crazy pixel check" t "\n\nNAN (Not a Number):\n> values that can't be represented in pixels" n 1}
+ crazyPixel_group 0
+ addUserKnob {83 pixel_choice l check M {INF NAN NEGATIVE}}
+ addUserKnob {20 endGroup_9 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 alpha_group l "alpha check" t "check alpha over the image" n 1}
+ alpha_group 0
+ addUserKnob {6 invert_alpha l invert +STARTLINE}
+ addUserKnob {6 BW_enable l "black and white" -STARTLINE}
+ addUserKnob {6 crunch_alpha l crunch -STARTLINE}
+ addUserKnob {7 alpha_color l color R 0 6}
+ addUserKnob {7 alpha_mix l opacity}
+ alpha_mix 1
+ addUserKnob {20 endGroup_5 l endGroup n -1}
+ addUserKnob {26 spc9 l "" +STARTLINE}
+ addUserKnob {26 spc12 l "" +STARTLINE T " "}
+ addUserKnob {6 flip_enable l flip -STARTLINE}
+ addUserKnob {6 flop_enable l flop -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {20 overscanGroup l overscan n 1}
+ overscanGroup 0
+ addUserKnob {22 adjust_format l "adjust format" T "node = nuke.thisNode()\nww = nuke.activeViewer().node().input(nuke.activeViewer().activeInput()).width()\nhh = nuke.activeViewer().node().input(nuke.activeViewer().activeInput()).height()\npp = nuke.activeViewer().node().input(nuke.activeViewer().activeInput()).pixelAspect()\n\nnode.begin()\nnode.end()\n\nnode\['get_format'].setValue(ww , 0)\nnode\['get_format'].setValue(hh , 1)\nnode\['get_pixelAspect'].setValue(pp)" +STARTLINE}
+ addUserKnob {7 overscan l size R 0.1 2}
+ overscan 0.85
+ addUserKnob {7 overscan_opacity l opacity}
+ overscan_opacity 0.5
+ addUserKnob {7 overscan_line_opacity l "line opacity"}
+ addUserKnob {14 get_format l format +INVISIBLE R 0 100}
+ get_format {4608 3164}
+ addUserKnob {7 get_pixelAspect l "pixel aspect ratio" +INVISIBLE R 0.5 2.5}
+ get_pixelAspect 2
+ addUserKnob {20 endGroup_6 l endGroup n -1}
+ addUserKnob {20 endGroup_4 l endGroup n -1}
+ addUserKnob {20 stabilizeGroup l "stabilize preview" n 1}
+ stabilizeGroup 0
+ addUserKnob {6 stab l "preview stabilized" +STARTLINE}
+ addUserKnob {20 endGroup_11 l endGroup n -1}
+ addUserKnob {20 letterbox_group l "letter/ pillar box" n 1}
+ letterbox_group 0
+ addUserKnob {41 presets T AspectMask.presets}
+ addUserKnob {41 aspect l custom T AspectMask.aspect}
+ addUserKnob {41 outputview l output T AspectMask.outputview}
+ addUserKnob {41 k l "line thickness" -STARTLINE T AspectMask.k}
+ addUserKnob {20 endGroup_10 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {26 credit l "" +STARTLINE T "Designed by Luciano Cequinel\nversion 2.8.0"}
+ addUserKnob {20 tab l "text overlay"}
+ addUserKnob {6 textOverlay l "text overlay" +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {1 overlay l "custom text"}
+ overlay "\[string range \[file tail \[value root.name]] \[value int_cutIN] \[value int_cutOUT]]"
+ addUserKnob {7 cutIn R 0 50}
+ addUserKnob {7 cutOut -STARTLINE R 0 50}
+ cutOut 36.5
+ addUserKnob {3 int_cutIN l "" +STARTLINE +INVISIBLE}
+ int_cutIN {{floor(cutIn)}}
+ addUserKnob {3 int_cutOUT l "" -STARTLINE +INVISIBLE}
+ int_cutOUT {{floor(cutOut)}}
+ addUserKnob {26 ""}
+ addUserKnob {7 txt_scale l "overall text size" R 0.1 2}
+ txt_scale 0.6
+ addUserKnob {7 txt_opacity l opacity}
+ txt_opacity 0.7
+ addUserKnob {7 txtColor l color R 0 4}
+ addUserKnob {6 txt_color_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+ addUserKnob {6 txt_color_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 txt_color_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 txt_color_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 txt_color_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 color_rgb_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {4 txt_horizontal l alignment M {left center right "" ""}}
+ addUserKnob {4 txt_vertical l "" -STARTLINE M {top center bottom}}
+ txt_vertical bottom
+ addUserKnob {26 ""}
+ addUserKnob {15 text_box l "text padding" +INVISIBLE}
+ text_box {{"(txt_LeftPad + txt_padding)"} {"txt_BottomPad + txt_padding"} {"(width) - txt_RightPad - txt_padding"} {"(height) - txt_TopPad - txt_padding"}}
+ addUserKnob {7 txt_padding l "overall padding" R 0 200}
+ txt_padding 30
+ addUserKnob {20 group l "fine padding" n 1}
+ group 0
+ addUserKnob {7 txt_LeftPad l left R 0 200}
+ addUserKnob {7 txt_TopPad l top R 0 200}
+ addUserKnob {7 txt_RightPad l right R 0 200}
+ addUserKnob {7 txt_BottomPad l bottom R 0 200}
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 group_1 l "background box" n 1}
+ group_1 0
+ addUserKnob {7 bg_opacity l opacity}
+ bg_opacity 0.5
+ addUserKnob {30 bg_padding l padding}
+ bg_padding {20 20}
+ addUserKnob {20 endGroup_2 l endGroup n -1}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode10
+  tile_color 0x464646ff
+  label "<center>crazy pixels"
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -198
+  ypos 3414
+  bdwidth 1451
+  bdheight 612
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode11
+  tile_color 0x464646ff
+  label "<center>flip and flop"
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -224
+  ypos 5368
+  bdwidth 758
+  bdheight 624
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode13
+  tile_color 0x464646ff
+  label <center>overscan
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -214
+  ypos 6874
+  bdwidth 1276
+  bdheight 841
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode15
+  tile_color 0x464646ff
+  label "<center>comp check"
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -100
+  ypos -1856
+  bdwidth 1097
+  bdheight 2467
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode16
+  tile_color 0x464646ff
+  label <center>Stabilization
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -269
+  ypos 6110
+  bdwidth 916
+  bdheight 628
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode17
+  tile_color 0x464646ff
+  label "<center>letter box"
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -223
+  ypos 8549
+  bdwidth 798
+  bdheight 516
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode4
+  tile_color 0x464646ff
+  label "<center>black white balance"
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -100
+  ypos 763
+  bdwidth 593
+  bdheight 532
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode6
+  tile_color 0x464646ff
+  label "<center>text overlay"
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -204
+  ypos 7754
+  bdwidth 1301
+  bdheight 699
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode7
+  tile_color 0x464646ff
+  label <center>alpha
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -299
+  ypos 4175
+  bdwidth 2094
+  bdheight 1048
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode8
+  tile_color 0x464646ff
+  label <center>HSV
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -100
+  ypos 2320
+  bdwidth 1759
+  bdheight 1048
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode9
+  tile_color 0x464646ff
+  label <center>grain
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos -100
+  ypos 1555
+  bdwidth 907
+  bdheight 646
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x3b3b3bff
+  label <center>saturation
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos 182
+  ypos -44
+  bdwidth 743
+  bdheight 503
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode12
+  tile_color 0x3b3b3bff
+  label <center>colorspace
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos 181
+  ypos -1348
+  bdwidth 587
+  bdheight 408
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode14
+  tile_color 0x3b3b3bff
+  label <center>overlay
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos 467
+  ypos 6959
+  bdwidth 443
+  bdheight 663
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x3b3b3bff
+  label <center>gain
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos 182
+  ypos -899
+  bdwidth 598
+  bdheight 407
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0x3b3b3bff
+  label <center>gamma
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos 182
+  ypos -479
+  bdwidth 594
+  bdheight 414
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode5
+  tile_color 0x3b3b3bff
+  label <center>LOG
+  note_font "Verdana Bold Italic"
+  note_font_size 50
+  xpos 182
+  ypos -1766
+  bdwidth 492
+  bdheight 388
+  z_order 1
+ }
+ Input {
+  inputs 0
+  name LeaveUnconnected
+  xpos 0
+  ypos -2165
+ }
+ Dot {
+  name Dot15
+  xpos 34
+  ypos -1973
+ }
+set N849ed600 [stack 0]
+ Dot {
+  name Dot27
+  note_font_size 30
+  xpos 316
+  ypos -1973
+ }
+set N849ecf00 [stack 0]
+ Dot {
+  name Dot16
+  xpos 1013
+  ypos -1973
+ }
+ Dot {
+  name Dot50
+  note_font_size 30
+  xpos 1013
+  ypos 2432
+ }
+set N849ec100 [stack 0]
+ Dot {
+  name Dot51
+  note_font_size 30
+  xpos 1220
+  ypos 2432
+ }
+set N849db900 [stack 0]
+ Dot {
+  name Dot52
+  note_font_size 30
+  xpos 1393
+  ypos 2432
+ }
+set N849db200 [stack 0]
+ Dot {
+  name Dot84
+  note_font_size 30
+  xpos 1666
+  ypos 2432
+ }
+ Dot {
+  name Dot85
+  note_font_size 30
+  xpos 1666
+  ypos 3492
+ }
+set N849da400 [stack 0]
+ Dot {
+  name Dot87
+  note_font_size 30
+  xpos 1666
+  ypos 4267
+ }
+ Dot {
+  name Dot88
+  note_font_size 30
+  xpos 432
+  ypos 4267
+ }
+ Expression {
+  expr3 "a > 0 ? 1 : 0"
+  name crunchAlpha
+  xpos 398
+  ypos 4541
+  disable {{!crunch_alpha}}
+ }
+ Dot {
+  name Dot17
+  note_font_size 30
+  xpos 432
+  ypos 4695
+ }
+set N849d8800 [stack 0]
+ Dot {
+  name Dot35
+  note_font_size 30
+  xpos 186
+  ypos 4695
+ }
+ Invert {
+  channels alpha
+  name Invert_Alpha
+  xpos 152
+  ypos 4847
+  disable {{!invert_alpha}}
+ }
+set N845e3900 [stack 0]
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle3
+  xpos 152
+  ypos 4919
+ }
+ Dot {
+  name Dot80
+  note_font_size 30
+  xpos 186
+  ypos 5012
+ }
+push $N845e3900
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 1 1 0}
+  color_panelDropped true
+  format "1024 1024 0 0 1024 1024 1 square_1K"
+  name white_constant
+  xpos 1659
+  ypos 4494
+ }
+ Dot {
+  name Dot58
+  note_font_size 30
+  xpos 1693
+  ypos 4780
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 0 0 0}
+  color_panelDropped true
+  format "1024 1024 0 0 1024 1024 1 square_1K"
+  name red_constant1
+  xpos 1508
+  ypos 4494
+ }
+ Dot {
+  name Dot59
+  note_font_size 30
+  xpos 1542
+  ypos 4675
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 0 1 0}
+  color_panelDropped true
+  format "1024 1024 0 0 1024 1024 1 square_1K"
+  name blue_constant
+  xpos 1346
+  ypos 4494
+ }
+ Dot {
+  name Dot60
+  note_font_size 30
+  xpos 1380
+  ypos 4675
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 1 0 0}
+  color_panelDropped true
+  format "1024 1024 0 0 1024 1024 1 square_1K"
+  name green_constant
+  xpos 1184
+  ypos 4494
+ }
+ Dot {
+  name Dot61
+  note_font_size 30
+  xpos 1218
+  ypos 4675
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 0 0 0}
+  color_panelDropped true
+  format "1024 1024 0 0 1024 1024 1 square_1K"
+  name red_constant
+  xpos 998
+  ypos 4494
+ }
+push 0
+ Constant {
+  inputs 0
+  channels rgb
+  format "1024 1024 0 0 1024 1024 1 square_1K"
+  name black_constant
+  xpos 789
+  ypos 4494
+ }
+ Dot {
+  name Dot57
+  note_font_size 30
+  xpos 823
+  ypos 4675
+ }
+ CheckerBoard2 {
+  inputs 0
+  format "1024 1024 0 0 1024 1024 1 square_1K"
+  boxsize 6
+  name CheckerBoard1
+  xpos 615
+  ypos 4494
+ }
+ Dot {
+  name Dot56
+  note_font_size 30
+  xpos 649
+  ypos 4780
+ }
+ Dissolve {
+  inputs 7+1
+  which {{parent.alpha_color}}
+  name Dissolve1
+  xpos 998
+  ypos 4770
+ }
+ Reformat {
+  type "to box"
+  box_width {{get_format.w}}
+  box_height {{get_format.h}}
+  box_fixed true
+  box_pixel_aspect {{get_pixelAspect}}
+  name Reformat_Constant
+  xpos 998
+  ypos 4853
+ }
+push $N849d8800
+ Keymix {
+  inputs 3
+  mix {{alpha_mix}}
+  bbox B
+  name Keymix1
+  xpos 398
+  ypos 4847
+ }
+ Switch {
+  inputs 2
+  which {{BW_enable}}
+  name black_white
+  xpos 398
+  ypos 5008
+ }
+ Dot {
+  name Dot40
+  xpos 432
+  ypos 5157
+ }
+push $N849da400
+ Dot {
+  name Dot86
+  note_font_size 30
+  xpos 708
+  ypos 3492
+ }
+ Dot {
+  name Dot19
+  xpos 708
+  ypos 3579
+ }
+set N342f0800 [stack 0]
+ Dot {
+  name Dot20
+  xpos 894
+  ypos 3579
+ }
+set N342f0100 [stack 0]
+ Dot {
+  name Dot22
+  xpos 1065
+  ypos 3579
+ }
+ Expression {
+  expr0 "r < 0 ? 1000 : 0"
+  expr1 "g < 0 ? 1000 : 0"
+  expr2 "b < 0 ? 1000 : 0"
+  expr3 "a < 0 ? 1000 : 0"
+  name ExpressionNEGATIVE
+  xpos 1031
+  ypos 3668
+ }
+ Blur {
+  channels rgba
+  size 10
+  name BlurNEGATIVE
+  xpos 1031
+  ypos 3698
+ }
+ Dot {
+  name Dot18
+  xpos 1065
+  ypos 3846
+ }
+push $N342f0100
+ Expression {
+  expr0 isnan(r)?1000:0
+  expr1 isnan(g)?1000:0
+  expr2 isnan(b)?1000:0
+  expr3 isnan(a)?1000:0
+  name ExpressionNAN
+  xpos 860
+  ypos 3668
+ }
+ Blur {
+  channels rgba
+  size 10
+  name BlurNAN
+  xpos 860
+  ypos 3698
+ }
+ Dot {
+  name Dot21
+  xpos 894
+  ypos 3774
+ }
+push $N342f0800
+ Expression {
+  expr0 isinf(r)?1000:0
+  expr1 isinf(g)?1000:0
+  expr2 isinf(b)?1000:0
+  expr3 isinf(a)?1000:0
+  name ExpressionINF
+  xpos 674
+  ypos 3668
+ }
+ Blur {
+  channels rgba
+  size 10
+  name BlurINF
+  xpos 674
+  ypos 3698
+ }
+ Switch {
+  inputs 3
+  which {{pixel_choice}}
+  name pixel
+  xpos 674
+  ypos 3842
+ }
+ Dot {
+  name Dot37
+  xpos 708
+  ypos 3949
+ }
+push $N849db200
+ Colorspace {
+  colorspace_out HSV
+  name Colorspace7
+  label "\[value colorspace_in]>\[value colorspace_out]"
+  xpos 1359
+  ypos 2600
+ }
+ Shuffle {
+  red blue
+  green blue
+  alpha blue
+  name Shuffle9
+  tile_color 0xffd600ff
+  label "\[value in]>\[value out]\nV"
+  xpos 1359
+  ypos 2647
+ }
+ Colorspace {
+  colorspace_in sRGB
+  name Colorspace2
+  label "\[value colorspace_in]>\[value colorspace_out]"
+  xpos 1359
+  ypos 2707
+ }
+ Dot {
+  name Dot55
+  note_font_size 30
+  xpos 1393
+  ypos 2956
+ }
+push $N849db900
+ Colorspace {
+  colorspace_out HSV
+  name Colorspace6
+  label "\[value colorspace_in]>\[value colorspace_out]"
+  xpos 1186
+  ypos 2600
+ }
+ Shuffle {
+  red green
+  blue green
+  alpha green
+  name Shuffle11
+  tile_color 0xffd600ff
+  label "\[value in]>\[value out]\nS"
+  xpos 1186
+  ypos 2647
+ }
+ Colorspace {
+  colorspace_in sRGB
+  name Colorspace3
+  label "\[value colorspace_in]>\[value colorspace_out]"
+  xpos 1186
+  ypos 2707
+ }
+ Dot {
+  name Dot54
+  note_font_size 30
+  xpos 1220
+  ypos 2834
+ }
+push $N849ec100
+ Colorspace {
+  colorspace_out HSV
+  name Colorspace1
+  label "\[value colorspace_in]>\[value colorspace_out]"
+  xpos 979
+  ypos 2600
+ }
+ Shuffle {
+  green white
+  blue white
+  alpha white
+  name Shuffle2
+  tile_color 0xffd600ff
+  label "\[value in]>\[value out]\nH"
+  xpos 979
+  ypos 2647
+ }
+ Colorspace {
+  colorspace_in HSV
+  colorspace_out sRGB
+  name Colorspace5
+  label "\[value colorspace_in]>\[value colorspace_out]"
+  xpos 979
+  ypos 2707
+ }
+ Switch {
+  inputs 3
+  which {{hsl}}
+  name HSL_choice
+  xpos 979
+  ypos 2952
+ }
+ Dot {
+  name Dot53
+  note_font_size 30
+  xpos 1013
+  ypos 3208
+ }
+push $N849ed600
+ Dot {
+  name Dot95
+  note_font_size 30
+  xpos -419
+  ypos -1973
+ }
+ OCIOFileTransform {
+  file /nbpt/remote/nbfxpt/jobs/EEE/resources/LUT_ARRI/ARRI_LogC4-to-Gamma24_Rec709-D65_v1-65.cube
+  working_space scene_linear
+  name OCIOFileTransform1
+  xpos -453
+  ypos 500
+ }
+ OCIOColorSpace {
+  in_colorspace "Input - Generic - sRGB - Texture"
+  out_colorspace scene_linear
+  name OCIOColorSpace2
+  xpos -453
+  ypos 554
+ }
+ Dot {
+  name Dot96
+  note_font_size 30
+  xpos -419
+  ypos 654
+ }
+push $N849ecf00
+ Dot {
+  name Dot38
+  xpos 316
+  ypos -1620
+ }
+set Ne02e7200 [stack 0]
+ Dot {
+  name Dot39
+  xpos 528
+  ypos -1620
+ }
+ Colorspace {
+  colorspace_out Cineon
+  name LOG
+  xpos 494
+  ypos -1538
+ }
+ Dot {
+  name Dot36
+  xpos 528
+  ypos -1459
+ }
+push $Ne02e7200
+ Switch {
+  inputs 2
+  which {{check_LOG}}
+  name View_LOG
+  xpos 282
+  ypos -1463
+ }
+ Dot {
+  name Dot74
+  note_font_size 30
+  xpos 316
+  ypos -1202
+ }
+set Ne02e4f00 [stack 0]
+ Dot {
+  name Dot62
+  note_font_size 30
+  xpos 622
+  ypos -1202
+ }
+ OCIOColorSpace {
+  in_colorspace "Output - Rec.709"
+  out_colorspace scene_linear
+  name OCIOColorSpace1
+  xpos 588
+  ypos -1136
+ }
+ Dot {
+  name Dot75
+  note_font_size 30
+  xpos 622
+  ypos -1043
+ }
+push $Ne02e4f00
+ Switch {
+  inputs 2
+  which {{check_colorspace}}
+  name View_Colorspace
+  xpos 282
+  ypos -1047
+ }
+ Dot {
+  name Dot30
+  xpos 316
+  ypos -785
+ }
+set Nc0532b00 [stack 0]
+ Dot {
+  name Dot31
+  xpos 503
+  ypos -785
+ }
+ ColorCorrect {
+  channels rgba
+  gain {{gaindown}}
+  name gain
+  xpos 469
+  ypos -679
+ }
+ Dot {
+  name Dot29
+  xpos 503
+  ypos -557
+ }
+push $Nc0532b00
+ Switch {
+  inputs 2
+  which {{enable_gain}}
+  name View_Gain
+  xpos 282
+  ypos -561
+ }
+ Dot {
+  name Dot33
+  xpos 316
+  ypos -368
+ }
+set N343f7900 [stack 0]
+ Dot {
+  name Dot34
+  xpos 516
+  ypos -368
+ }
+ ColorCorrect {
+  channels rgba
+  gamma {{gammaslider}}
+  name gamma
+  xpos 482
+  ypos -239
+ }
+ Dot {
+  name Dot32
+  xpos 516
+  ypos -118
+ }
+push $N343f7900
+ Switch {
+  inputs 2
+  which {{enable_gamma}}
+  name View_Gamma
+  xpos 282
+  ypos -122
+ }
+ Dot {
+  name Dot63
+  note_font_size 30
+  xpos 316
+  ypos 53
+ }
+set N343f0800 [stack 0]
+ Dot {
+  name Dot64
+  note_font_size 30
+  xpos 690
+  ypos 53
+ }
+ Dot {
+  name Dot1
+  note_font_size 30
+  xpos 690
+  ypos 124
+ }
+set N343d3900 [stack 0]
+ Dot {
+  name Dot26
+  xpos 799
+  ypos 124
+ }
+ Saturation {
+  saturation 4
+  name SaturationMax
+  xpos 765
+  ypos 210
+ }
+ Dot {
+  name Dot25
+  xpos 799
+  ypos 316
+ }
+push 0
+push $N343d3900
+push $N343d3900
+ Dot {
+  name Dot23
+  xpos 593
+  ypos 124
+ }
+ Saturation {
+  saturation 0
+  name SaturationMin
+  xpos 559
+  ypos 215
+ }
+ Dot {
+  name Dot24
+  xpos 593
+  ypos 316
+ }
+ Dissolve {
+  inputs 3+1
+  which {{parent.saturation}}
+  name Dissolve_Saturation
+  xpos 656
+  ypos 306
+ }
+ Dot {
+  name Dot28
+  xpos 690
+  ypos 401
+ }
+push $N343f0800
+ Switch {
+  inputs 2
+  which {{enable_saturation}}
+  name View_Saturation
+  xpos 282
+  ypos 397
+ }
+ Dot {
+  name Dot49
+  note_font_size 30
+  xpos 316
+  ypos 506
+ }
+push $N849ed600
+ Switch {
+  inputs 2
+  which {{"\[knob SmartIP.compCheck]"}}
+  name color_Check
+  xpos 0
+  ypos 502
+ }
+ Switch {
+  inputs 2
+  which {{client_LUT}}
+  name client_LUT
+  xpos 0
+  ypos 650
+ }
+ Dot {
+  name Dot2
+  note_font_size 30
+  xpos 34
+  ypos 925
+ }
+set N5c2d1d00 [stack 0]
+ Dot {
+  name Dot3
+  note_font_size 30
+  xpos 223
+  ypos 925
+ }
+ Grade {
+  blackpoint {{blackBal x1093 0} {blackBal x1093 0.1449999958} {blackBal x1093 0} {blackBal x1093 0}}
+  blackpoint_panelDropped true
+  name black
+  tile_color 0xff
+  gl_color 0xff
+  xpos 189
+  ypos 1028
+  disable {{!enable_black}}
+ }
+ Grade {
+  whitepoint {{whiteBal x1093 0.1700000018} {whiteBal x1093 0.1400000006} {whiteBal x1093 0.275000006} {whiteBal x1093 0}}
+  whitepoint_panelDropped true
+  white {{gain_compensation x1093 0.5600000024} {gain_compensation x1093 0.1700000018} {gain_compensation x1093 0.2899999917} {gain_compensation x1093 0}}
+  white_panelDropped true
+  name white
+  tile_color 0xffffffff
+  gl_color 0xffffffff
+  xpos 189
+  ypos 1118
+  disable {{!enable_white}}
+ }
+ Dot {
+  name Dot4
+  note_font_size 30
+  xpos 223
+  ypos 1205
+ }
+push $N5c2d1d00
+ Switch {
+  inputs 2
+  which {{"\[knob SmartIP.gr_balance]"}}
+  name View_Balance
+  xpos 0
+  ypos 1201
+ }
+ Dot {
+  name Dot41
+  note_font_size 30
+  note_font_color 0xff00ff
+  xpos 34
+  ypos 1691
+ }
+set N6ceecf00 [stack 0]
+ Dot {
+  name Dot42
+  note_font_size 30
+  note_font_color 0xff00ff
+  xpos 264
+  ypos 1691
+ }
+set N6ceec800 [stack 0]
+ Dot {
+  name Dot43
+  note_font_size 30
+  note_font_color 0xff00ff
+  xpos 395
+  ypos 1691
+ }
+set N6ceec100 [stack 0]
+ Dot {
+  name Dot44
+  note_font_size 30
+  note_font_color 0xff00ff
+  xpos 530
+  ypos 1691
+ }
+set N6cecf900 [stack 0]
+ Dot {
+  name Dot45
+  note_font_size 30
+  note_font_color 0xff00ff
+  xpos 661
+  ypos 1691
+ }
+ Matrix {
+  channels rgb
+  matrix {
+      {-2 -1 0}
+      {-1 0 1}
+      {0 1 2}
+    }
+  name Matrix7
+  label Prewitt(Edge)
+  xpos 627
+  ypos 1845
+ }
+ Dot {
+  name Dot46
+  note_font_size 30
+  xpos 661
+  ypos 1983
+ }
+push $N6cecf900
+ Matrix {
+  channels rgb
+  matrix {
+      {-2 -2 0}
+      {-2 0 2}
+      {0 2 2}
+    }
+  name Matrix6
+  label Sobel(Edge)
+  xpos 496
+  ypos 1850
+ }
+ Dot {
+  name Dot47
+  note_font_size 30
+  xpos 530
+  ypos 1948
+ }
+push $N6ceec100
+ Matrix {
+  channels rgb
+  matrix {
+      {-1 -1 -1}
+      {-1 9 -1}
+      {-1 -1 -1}
+    }
+  name Matrix2
+  label HighPass
+  xpos 361
+  ypos 1851
+ }
+ Dot {
+  name Dot48
+  note_font_size 30
+  xpos 395
+  ypos 1932
+ }
+push $N6ceec800
+ Matrix {
+  channels rgb
+  matrix {
+      {-1 -1 -1}
+      {-1 8 -1}
+      {-1 -1 -1}
+    }
+  name Matrix1
+  label Laplacian(Grain)
+  xpos 230
+  ypos 1846
+ }
+ Switch {
+  inputs 4
+  which {{grainMethod}}
+  name grain_choice
+  xpos 230
+  ypos 1979
+ }
+ Multiply {
+  channels rgba
+  value {{grainMultiply}}
+  name Multiply1
+  label "\[value value]"
+  xpos 230
+  ypos 2112
+  addUserKnob {20 User}
+  addUserKnob {7 mult R 0 20}
+  mult 10
+ }
+push $N6ceecf00
+ Switch {
+  inputs 2
+  which {{"\[knob SmartIP.grain_group]"}}
+  name Grain_Group
+  tile_color 0xffffff01
+  label "\[value which]"
+  xpos 0
+  ypos 2112
+ }
+ Switch {
+  inputs 2
+  which {{"\[knob SmartIP.HSL_group]"}}
+  name HSL_Group
+  xpos 0
+  ypos 3204
+ }
+ Switch {
+  inputs 2
+  which {{"\[knob SmartIP.crazyPixel_group]"}}
+  name CrazyPixel_Group
+  xpos 0
+  ypos 3945
+ }
+ Switch {
+  inputs 2
+  which {{"\[knob SmartIP.alpha_group]"}}
+  name Alpha_Group
+  xpos 0
+  ypos 5153
+ }
+ Dot {
+  name Dot68
+  note_font_size 30
+  xpos 34
+  ypos 5523
+ }
+set N84cdcf00 [stack 0]
+ Dot {
+  name Dot72
+  note_font_size 30
+  xpos 192
+  ypos 5523
+ }
+ Mirror2 {
+  flip true
+  name FLIP
+  xpos 158
+  ypos 5598
+ }
+ Dot {
+  name Dot73
+  note_font_size 30
+  xpos 192
+  ypos 5667
+ }
+push $N84cdcf00
+ Switch {
+  inputs 2
+  which {{flip_enable}}
+  name View_Flip
+  xpos 0
+  ypos 5663
+ }
+ Dot {
+  name Dot69
+  note_font_size 30
+  xpos 34
+  ypos 5741
+ }
+set N84cbeb00 [stack 0]
+ Dot {
+  name Dot70
+  note_font_size 30
+  xpos 197
+  ypos 5741
+ }
+ Mirror2 {
+  flop true
+  name FLOP
+  xpos 163
+  ypos 5819
+ }
+ Dot {
+  name Dot71
+  note_font_size 30
+  xpos 197
+  ypos 5906
+ }
+push $N84cbeb00
+ Switch {
+  inputs 2
+  which {{flop_enable}}
+  name View_Flop
+  xpos 0
+  ypos 5902
+ }
+ Dot {
+  name Dot76
+  note_font_size 30
+  xpos 34
+  ypos 6287
+ }
+set N78ee8800 [stack 0]
+ Dot {
+  name Dot90
+  note_font_size 30
+  xpos 371
+  ypos 6287
+ }
+ Dot {
+  name Dot89
+  note_font_size 30
+  xpos 371
+  ypos 6495
+ }
+push $N78ee8800
+ Switch {
+  inputs 2
+  which {{stab}}
+  name stabilize
+  xpos 0
+  ypos 6491
+ }
+ Dot {
+  name Dot78
+  note_font_size 30
+  xpos 34
+  ypos 7040
+ }
+set N84cbc800 [stack 0]
+ Dot {
+  name Dot79
+  note_font_size 30
+  xpos 267
+  ypos 7040
+ }
+set N84cbc100 [stack 0]
+ Dot {
+  name Dot81
+  note_font_size 30
+  xpos 642
+  ypos 7040
+ }
+ Remove {
+  operation keep
+  channels alpha
+  name Remove1
+  label "\[value operation] : \[value channels]"
+  xpos 608
+  ypos 7067
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 white -1 -1 rgba.alpha 0 3"
+  name Shuffle5
+  label "\[value in1]\\n\[knob hide_input \[ expr \{\[value postage_stamp]? 1:0\}]]"
+  xpos 608
+  ypos 7117
+ }
+ Crop {
+  box {0 0 {get_format.w} {get_format.h}}
+  name Crop_Reformat
+  xpos 608
+  ypos 7165
+ }
+ Invert {
+  channels alpha
+  name Invert5
+  xpos 608
+  ypos 7204
+ }
+ Reformat {
+  type scale
+  scale {{1/overscan}}
+  resize none
+  pbb true
+  name overscan2
+  xpos 608
+  ypos 7242
+ }
+ Dot {
+  name Dot83
+  note_font_size 30
+  xpos 642
+  ypos 7323
+ }
+set N843d9600 [stack 0]
+ Dot {
+  name Dot82
+  label edge
+  note_font Verdana
+  note_font_size 30
+  xpos 642
+  ypos 7386
+ }
+ EdgeDetectWrapper {
+  channels alpha
+  erodesize 2
+  blursize {-3.5 -5.5}
+  blurquality 1
+  name EdgeDetect1
+  xpos 608
+  ypos 7421
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle4
+  xpos 608
+  ypos 7463
+ }
+ Dot {
+  name Dot94
+  note_font_size 30
+  xpos 642
+  ypos 7501
+ }
+push $N843d9600
+push $N84cbc100
+ BlackOutside {
+  name BlackOutside
+  xpos 233
+  ypos 7123
+ }
+ Reformat {
+  type scale
+  scale {{1/overscan}}
+  resize none
+  pbb true
+  name overscan
+  xpos 233
+  ypos 7208
+ }
+ Grade {
+  inputs 1+1
+  multiply 0
+  white_clamp true
+  mix {{overscan_opacity}}
+  name GradeReformat
+  xpos 233
+  ypos 7319
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  Achannels rgb
+  mix {{overscan_line_opacity}}
+  name Merge1
+  xpos 233
+  ypos 7497
+ }
+ Dot {
+  name Dot77
+  note_font_size 30
+  xpos 267
+  ypos 7645
+ }
+push $N84cbc800
+ Switch {
+  inputs 2
+  which {{"\[knob SmartIP.overscanGroup]"}}
+  name Overscan_Group
+  xpos 0
+  ypos 7641
+ }
+ Dot {
+  name Dot6
+  xpos 34
+  ypos 7871
+ }
+set Nfcdd9600 [stack 0]
+ Dot {
+  name Dot7
+  xpos 419
+  ypos 7871
+ }
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name Shuffle1
+  xpos 385
+  ypos 7936
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  opacity {{parent.txt_opacity}}
+  message "\[value overlay]"
+  old_message {{109 97 115 116 101 114 99 111 109 112 95 116 101 109 112 108 97 116 101 46 110 107}
+    }
+  old_expression_markers {{0 21}
+    }
+  box {{text_box} {text_box} {text_box} {text_box}}
+  xjustify {{txt_horizontal}}
+  yjustify {{txt_vertical}}
+  transforms {{0 2}
+    }
+  cursor_position 1
+  font {{ Courier : Bold : CourierBold.pfa : 0 }}
+  global_font_scale {{txt_scale}}
+  scale {1 1}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{47 126}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 2560 1350 0 0 1 1 0 0 0 0}
+    }
+  color {1 1 1 1}
+  enable_background true
+  background_opacity {{parent.bg_opacity}}
+  background_border_x {{parent.bg_padding.u}}
+  background_border_y {{parent.bg_padding.v}}
+  name TXTname
+  xpos 385
+  ypos 7997
+ }
+ Dot {
+  name Dot8
+  xpos 419
+  ypos 8069
+ }
+set N21e3dd00 [stack 0]
+ Dot {
+  name Dot10
+  xpos 554
+  ypos 8069
+ }
+set N21e3d600 [stack 0]
+ Dot {
+  name Dot11
+  xpos 664
+  ypos 8069
+ }
+set N21e3cf00 [stack 0]
+ Dot {
+  name Dot65
+  note_font_size 30
+  xpos 774
+  ypos 8069
+ }
+ Dot {
+  name Dot66
+  label white
+  note_font Verdana
+  note_font_size 30
+  xpos 774
+  ypos 8115
+ }
+ Dot {
+  name Dot67
+  note_font_size 30
+  xpos 774
+  ypos 8250
+ }
+push $N21e3cf00
+ Shuffle {
+  green black
+  blue black
+  name ShuffleTXTRed2
+  tile_color 0xff0000ff
+  gl_color 0xff0000ff
+  xpos 630
+  ypos 8119
+ }
+ Dot {
+  name Dot13
+  xpos 664
+  ypos 8193
+ }
+push $N21e3d600
+ Shuffle {
+  red black
+  green black
+  name ShuffleTXTBlue
+  tile_color 0xffff
+  gl_color 0xffff
+  xpos 520
+  ypos 8119
+ }
+ Dot {
+  name Dot14
+  xpos 554
+  ypos 8169
+ }
+push 0
+push $N21e3dd00
+ Shuffle {
+  red black
+  blue black
+  name ShuffleTXTGreen
+  tile_color 0xff00ff
+  gl_color 0xff00ff
+  xpos 385
+  ypos 8119
+ }
+push $N21e3dd00
+ Dot {
+  name Dot9
+  xpos 297
+  ypos 8069
+ }
+ Shuffle {
+  green black
+  blue black
+  name ShuffleTXTRed
+  tile_color 0xff0000ff
+  gl_color 0xff0000ff
+  xpos 263
+  ypos 8119
+ }
+ Dot {
+  name Dot12
+  xpos 297
+  ypos 8250
+ }
+ Dissolve {
+  inputs 5+1
+  which {{txtColor}}
+  name DissolveTXT
+  xpos 385
+  ypos 8240
+ }
+ Dot {
+  name Dot5
+  xpos 419
+  ypos 8333
+ }
+push $Nfcdd9600
+ Merge2 {
+  inputs 2
+  bbox B
+  mix {{textOverlay}}
+  name MergeTXT
+  xpos 0
+  ypos 8329
+ }
+ Dot {
+  name Dot91
+  note_font_size 30
+  xpos 34
+  ypos 8745
+ }
+set Nf8636b00 [stack 0]
+ Dot {
+  name Dot92
+  note_font_size 30
+  xpos 270
+  ypos 8745
+ }
+ Group {
+  name AspectMask
+  help "Creates some standard crop masks.\nhttp://intranet/depts/Compositing:Nuke:Gizmos:AspectMask_FS"
+  knobChanged "\ntn=nuke.thisNode()\nif  tn\['presets'].value() == 'Custom':\n    tn\['aspect'].setVisible(True)\nelse:\n    tn\['aspect'].setVisible(False)\n    if tn\['presets'].value().partition('(')\[2].strip(')').replace(',', '.').rfind(':') == True:\n        aspectResolve = tn\['presets'].value().partition('(')\[2].strip(')').partition(':')\n        aspectNum = float( int( float( aspectResolve\[0] ) / float( aspectResolve\[2] ) * 100 ) ) / 100\n    else:\n        aspectNum = tn\['presets'].value().partition('(')\[2].strip(')').replace(',', '.')\n    tn\['aspect'].setValue( float( aspectNum ) )\n\nif tn\['outputview'].value() == 'lines':\n    tn\['k'].setVisible(True)\nelse:\n    tn\['k'].setVisible(False)\n\n"
+  tile_color 0x63ff49ff
+  label "\[value presets]"
+  note_font "Bitstream Vera Sans"
+  xpos 236
+  ypos 8840
+  disable {{!preview_aspect}}
+  mapsize {0.15 0.15}
+  addUserKnob {20 format l "Format Kit"}
+  addUserKnob {26 ""}
+  addUserKnob {4 presets M {"Cinemascope (2,35)" "Academy Flat (1,85)" "Widescreen TV - DTV/HDTV (1,78)" "16:9 (1,77)" "Paramount (1,66)" "35 mm standard (1,37)" "Standard TV (4:3)" Custom "" "" "" "" "" "" ""}}
+  addUserKnob {7 aspect l custom +HIDDEN R 1 5}
+  aspect 2.35
+  addUserKnob {26 ""}
+  addUserKnob {4 outputview l output M {solid crop band lines off "" ""}}
+  outputview lines
+  addUserKnob {3 k l "line thickness"}
+  k 2
+  addUserKnob {26 ""}
+  addUserKnob {18 color}
+  color {1 0 0}
+  addUserKnob {6 color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+  addUserKnob {7 maskOpacity}
+  maskOpacity 1
+ }
+  BackdropNode {
+   inputs 0
+   name BackdropNode1
+   tile_color 0xffe4b501
+   label BAND
+   note_font_size 42
+   xpos -1099
+   ypos 70
+   bdwidth 446
+   bdheight 719
+  }
+  BackdropNode {
+   inputs 0
+   name BackdropNode2
+   tile_color 0xe6e6fa01
+   label LINES
+   note_font_size 42
+   xpos 2
+   ypos 388
+   bdwidth 400
+   bdheight 370
+  }
+  BackdropNode {
+   inputs 0
+   name BackdropNode3
+   tile_color 0xbc8f8f01
+   label SOLID
+   note_font_size 42
+   xpos -309
+   ypos 210
+   bdwidth 262
+   bdheight 318
+  }
+  Input {
+   inputs 0
+   name in
+   xpos -542
+   ypos 83
+  }
+  Crop {
+   box {-1 0 {"input.width + 1" i} {input.height i}}
+   crop false
+   name fix_for_black_edge
+   xpos -542
+   ypos 146
+  }
+set Nf8623200 [stack 0]
+  Dot {
+   name Dot10
+   xpos 428
+   ypos 150
+  }
+set Nf8622b00 [stack 0]
+  Dot {
+   name Dot3
+   xpos 550
+   ypos 150
+  }
+  Dot {
+   name Dot2
+   xpos 550
+   ypos 939
+  }
+push $Nf8623200
+  Dot {
+   name Dot4
+   xpos -675
+   ypos 150
+  }
+set Nf8621600 [stack 0]
+  Dot {
+   name Dot1
+   xpos -832
+   ypos 150
+  }
+set Nf8620f00 [stack 0]
+  Dot {
+   name Dot5
+   xpos -1055
+   ypos 150
+  }
+  Shuffle {
+   red white
+   green white
+   blue white
+   alpha white
+   name Shuffle6
+   xpos -1089
+   ypos 427
+  }
+  Grade {
+   multiply {{color i} {color i} {color i} 1}
+   name Grade9
+   xpos -1089
+   ypos 474
+  }
+set N9433b900 [stack 0]
+  Multiply {
+   name input_format2
+   xpos 12
+   ypos 468
+   addUserKnob {20 User}
+   addUserKnob {7 outputformat l "output format"}
+   outputformat {{"presets == 0 ? 2.35 : (presets == 1 ? 1.85 : (presets == 2 ? 1.78 : (presets == 3 ? 1.66 : (presets == 4 ? 1.37 : (presets == 5 ? (1.333) : (aspect))))))"}}
+  }
+set N94338100 [stack 0]
+  Multiply {
+   name computation_core6
+   xpos 169
+   ypos 468
+   addUserKnob {20 User}
+   addUserKnob {7 area l "format area"}
+   area {{input.width/input.outputformat}}
+   addUserKnob {7 size l dimension}
+   size {{"input.width - (input.height*input.outputformat)"}}
+   addUserKnob {7 divided}
+   divided {{size/2}}
+  }
+set N94327200 [stack 0]
+  Crop {
+   box {{"input.divided - k" i} 0 {"input.width - (input.divided - k)" i} {input.height i}}
+   intersect true
+   name Crop10
+   xpos 312
+   ypos 474
+  }
+push $N94327200
+  Crop {
+   box {{input.divided i} 0 {"input.width - input.divided" i} {input.height i}}
+   intersect true
+   name Crop9
+   xpos 169
+   ypos 527
+  }
+  Merge2 {
+   inputs 2
+   operation out
+   name Merge5
+   xpos 312
+   ypos 527
+  }
+  Dot {
+   name Dot16
+   xpos 346
+   ypos 687
+  }
+push $N94338100
+  Multiply {
+   name computation_core2
+   xpos 12
+   ypos 583
+   addUserKnob {20 User}
+   addUserKnob {7 area l "format area"}
+   area {{input.width/input.outputformat}}
+   addUserKnob {7 size l dimension}
+   size {{"input.height - (input.width/input.outputformat)"}}
+   addUserKnob {7 divided}
+   divided {{size/2}}
+  }
+set N94324800 [stack 0]
+  Crop {
+   box {0 {input.divided} {input.width} {"input.height - input.divided"}}
+   intersect true
+   name Crop4
+   xpos 12
+   ypos 642
+  }
+push $N94324800
+  Crop {
+   box {{curve} {"input.divided + k"} {input.width} {"input.height - (input.divided + k)"}}
+   intersect true
+   name Crop5
+   xpos 154
+   ypos 589
+  }
+  Merge2 {
+   inputs 2
+   operation out
+   name Merge4
+   xpos 154
+   ypos 642
+  }
+  Switch {
+   inputs 2
+   which {{"in.width/in.height < input_format1.outputformat ? 0 : 1"}}
+   name Switch5
+   xpos 154
+   ypos 683
+  }
+push $Nf8622b00
+  Dot {
+   name Dot11
+   xpos 428
+   ypos 732
+  }
+  Merge2 {
+   inputs 2
+   name Merge3
+   xpos 154
+   ypos 728
+  }
+  Dot {
+   name Dot9
+   xpos 188
+   ypos 862
+  }
+push $N9433b900
+  Multiply {
+   value {{maskOpacity i}}
+   name opacity
+   xpos -1089
+   ypos 509
+  }
+  Dot {
+   name Dot6
+   xpos -1055
+   ypos 676
+  }
+push $Nf8620f00
+  Shuffle {
+   red white
+   green white
+   blue white
+   alpha white
+   name Shuffle1
+   xpos -866
+   ypos 310
+  }
+  Multiply {
+   name input_format3
+   xpos -866
+   ypos 373
+   addUserKnob {20 User}
+   addUserKnob {7 outputformat l "output format"}
+   outputformat {{"(presets == 0 ? 2.35 : (presets == 1 ? 1.85 : (presets == 2 ? 1.78 : (presets == 3 ? 1.77 : (presets == 4 ? 1.66 : (presets == 5 ? 1.37: (presets == 6 ? 1.333 : (aspect))))))))" i}}
+  }
+set N78dd2b00 [stack 0]
+  Multiply {
+   name computation_core4
+   xpos -757
+   ypos 373
+   addUserKnob {20 User}
+   addUserKnob {7 area l "format area"}
+   area {{input.width/input.outputformat i}}
+   addUserKnob {7 size l dimension}
+   size {{"input.width - (input.height/(1/input.outputformat))" i}}
+   addUserKnob {7 divided}
+   divided {{size/2 i}}
+  }
+  Crop {
+   box {{input.divided i} 0 {"input.width - input.divided" i} {input.height i}}
+   intersect true
+   name Crop8
+   xpos -757
+   ypos 528
+  }
+  Invert {
+   name Invert2
+   xpos -757
+   ypos 570
+  }
+  Dot {
+   name Dot13
+   xpos -723
+   ypos 635
+  }
+push $N78dd2b00
+  Multiply {
+   name computation_core
+   xpos -866
+   ypos 419
+   addUserKnob {20 User}
+   addUserKnob {7 area l "format area"}
+   area {{input.width/input.outputformat i}}
+   addUserKnob {7 size l dimension}
+   size {{"input.height - (input.width/input.outputformat)" i}}
+   addUserKnob {7 divided}
+   divided {{size/2 i}}
+  }
+  Crop {
+   box {0 {input.divided i} {input.width i} {"input.height - input.divided" i}}
+   intersect true
+   name Crop1
+   xpos -866
+   ypos 529
+  }
+  Invert {
+   name Invert1
+   xpos -866
+   ypos 571
+  }
+  Switch {
+   inputs 2
+   which {{"in.width/in.height < input_format1.outputformat ? 0 : 1" i}}
+   name Switch4
+   xpos -866
+   ypos 631
+  }
+  Merge2 {
+   inputs 2
+   operation multiply
+   name Merge2
+   xpos -866
+   ypos 671
+  }
+push $Nf8621600
+  Dot {
+   name Dot7
+   xpos -675
+   ypos 763
+  }
+  Merge2 {
+   inputs 2
+   name Merge1
+   xpos -866
+   ypos 759
+  }
+  Dot {
+   name Dot14
+   xpos -832
+   ypos 939
+  }
+push $Nf8623200
+  Multiply {
+   name input_format1
+   xpos -542
+   ypos 290
+   addUserKnob {20 User}
+   addUserKnob {7 outputformat l "output format"}
+   outputformat {{"(presets == 0 ? 2.35 : (presets == 1 ? 1.85 : (presets == 2 ? 1.78 : (presets == 3 ? 1.77 : (presets == 4 ? 1.66 : (presets == 5 ? 1.37: (presets == 6 ? 1.333 : (aspect))))))))" i}}
+  }
+set Nb8cf3900 [stack 0]
+  Multiply {
+   name computation_core5
+   xpos -442
+   ypos 354
+   addUserKnob {20 User}
+   addUserKnob {7 area l "format area"}
+   area {{input.width/input.outputformat i}}
+   addUserKnob {7 size l dimension}
+   size {{"input.width - (input.height*input.outputformat)" i}}
+   addUserKnob {7 divided}
+   divided {{size/2 i}}
+  }
+  Crop {
+   box {{input.divided i} 0 {"input.width - input.divided" i} {input.height i}}
+   name Crop7
+   xpos -442
+   ypos 412
+  }
+  Dot {
+   name Dot8
+   xpos -408
+   ypos 514
+  }
+push $Nb8cf3900
+  Multiply {
+   name computation_core3
+   xpos -542
+   ypos 347
+   addUserKnob {20 User}
+   addUserKnob {7 area l "format area"}
+   area {{input.width/input.outputformat i}}
+   addUserKnob {7 size l dimension}
+   size {{"input.height - (input.width/input.outputformat)" i}}
+   addUserKnob {7 divided}
+   divided {{size/2 i}}
+  }
+  Crop {
+   box {0 {input.divided i} {input.width i} {"input.height - input.divided" i}}
+   name Crop3
+   xpos -542
+   ypos 409
+  }
+  Switch {
+   inputs 2
+   which {{"in.width/in.height < input_format1.outputformat ? 0 : 1" i}}
+   name Switch3
+   xpos -542
+   ypos 510
+  }
+push $Nb8cf3900
+  Multiply {
+   name computation_core1
+   xpos -137
+   ypos 290
+   addUserKnob {20 User}
+   addUserKnob {7 area l "format area"}
+   area {{input.width/input.outputformat}}
+   addUserKnob {7 size l dimension}
+   size {{"input.width - (input.height*input.outputformat)"}}
+   addUserKnob {7 divided}
+   divided {{size/2}}
+  }
+set Nb8cbf200 [stack 0]
+  Dot {
+   name Dot17
+   xpos -103
+   ypos 502
+  }
+push $Nb8cbf200
+  Crop {
+   box {{input.divided} 0 {"input.width - input.divided"} {input.height}}
+   name Crop6
+   xpos -137
+   ypos 424
+  }
+push $Nb8cf3900
+  Multiply {
+   name computation_core7
+   xpos -299
+   ypos 290
+   addUserKnob {20 User}
+   addUserKnob {7 area l "format area"}
+   area {{input.width/input.outputformat i}}
+   addUserKnob {7 size l dimension}
+   size {{"input.height - (input.width/input.outputformat)" i}}
+   addUserKnob {7 divided}
+   divided {{size/2 i}}
+  }
+  Crop {
+   box {0 {input.divided i} {input.width i} {"input.height - input.divided" i}}
+   intersect true
+   name Crop2
+   xpos -299
+   ypos 369
+  }
+  Switch {
+   inputs 2
+   which {{"in.width/in.height < input_format1.outputformat ? 0 : 1" i}}
+   name Switch2
+   xpos -299
+   ypos 424
+  }
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos -299
+   ypos 498
+  }
+  Dot {
+   name Dot12
+   xpos -265
+   ypos 829
+  }
+  Switch {
+   inputs 5
+   which {{outputview i}}
+   name Switch1
+   xpos -542
+   ypos 935
+  }
+  Output {
+   name Output1
+   xpos -542
+   ypos 1071
+  }
+ end_group
+ Dot {
+  name Dot93
+  note_font_size 30
+  xpos 270
+  ypos 8953
+ }
+push $Nf8636b00
+ Switch {
+  inputs 2
+  which {{"\[knob SmartIP.letterbox_group]"}}
+  name letter_box
+  xpos 0
+  ypos 8949
+ }
+ Output {
+  name Output
+  xpos 0
+  ypos 9187
+ }
+end_group
